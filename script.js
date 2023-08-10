@@ -27,9 +27,10 @@ if(navigator.geolocation) {
    minWidth: 100,
    autoClose: false,
    closeOnClick: false,
-  }), L.tooltip({
-   opacity: 0.3,
-  }))
+  }), L.tooltip()
+    .setLatLng(latlng)
+    .setContent('Hello world!<br />This is a nice tooltip.')
+    .addTo(map))
   .openPopup();
   })
  }
