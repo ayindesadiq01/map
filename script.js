@@ -10,7 +10,28 @@ if(navigator.geolocation) {
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
    maxZoom: 19,
    attribution: '© OpenStreetMap'
-}).addTo(mapLocation);
+  }).addTo(mapLocation);
+
+  
+
+  // To add Marker by clicking on different Coords
+  mapLocation.on('click', function(mapEvent){
+   console.log(mapEvent)
+   const {lat, lng} = mapEvent.latlng;
+   const mapLatLng = [lat, lng]
+   // Adding Marker
+  const marker = L.marker(mapLatLng).addTo(mapLocation);
+  marker.bindPopup(
+   L.popup({
+   maxWidth: 300,
+   minWidth: 100,
+   autoClose: false,
+   closeOnClick: false,
+  }), L.tooltip({
+   opacity: 0.3,
+  }))
+  .openPopup();
+  })
  }
 
 , function(){
