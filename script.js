@@ -5,7 +5,12 @@ if(navigator.geolocation) {
   const {latitude, longitude} = position.coords;
   const coords = [latitude, longitude]
  
-  var map = L.map('map').setView([51.505, -0.09], 13);
+  const mapLocation = L.map('mapLocation').setView(coords, 13);
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+   maxZoom: 19,
+   attribution: '© OpenStreetMap'
+}).addTo(mapLocation);
  }
 
 , function(){
